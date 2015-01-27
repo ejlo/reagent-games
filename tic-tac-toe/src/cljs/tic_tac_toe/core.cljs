@@ -1,10 +1,11 @@
 (ns tic-tac-toe.core
-    (:require [reagent.core :as reagent]
-              [secretary.core :as secretary :include-macros true]
-              [goog.events :as events]
-              [goog.history.EventType :as EventType]
-              [tic-tac-toe.state :as state]
-              [tic-tac-toe.test :as test])
+  (:require [reagent.core :as reagent]
+            [cljsjs.react]
+            [secretary.core :as secretary :include-macros true]
+            [goog.events :as events]
+            [goog.history.EventType :as EventType]
+            [tic-tac-toe.state :as state]
+            [tic-tac-toe.test :as test])
     (:import goog.History))
 
 ;; -------------------------

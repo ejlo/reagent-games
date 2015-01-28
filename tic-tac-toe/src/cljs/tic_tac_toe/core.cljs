@@ -6,7 +6,7 @@
             [goog.history.EventType :as EventType]
             [tic-tac-toe.state :as state]
             [tic-tac-toe.test :as test])
-    (:import goog.History))
+  (:import goog.History))
 
 ;; -------------------------
 ;; Views

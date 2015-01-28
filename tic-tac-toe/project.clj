@@ -37,11 +37,11 @@
             [lein-garden "0.2.5"]
             [lein-environ "1.0.0"]
             [lein-ring "0.9.1"]
-            [lein-asset-minifier "0.2.2" :exclusions [org.clojure/clojure org.clojure/core.async]]
+            [lein-asset-minifier "0.2.2"]
             [lein-exec "0.3.4"]
             [lein-pdo "0.1.1"]
             [com.cemerick/clojurescript.test "0.3.3"]
-            [lein-figwheel "0.2.2-SNAPSHOT" :exclusions [org.clojure/clojure org.clojure/core.async]]
+            [lein-figwheel "0.2.2-SNAPSHOT"]
             [cider/cider-nrepl "0.9.0-SNAPSHOT"]]
 
   :ring {:handler tic-tac-toe.server.handler/app}

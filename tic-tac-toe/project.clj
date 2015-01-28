@@ -49,8 +49,7 @@
   :min-lein-version "2.5.0"
 
   :clean-targets  ^{:protect false} ["target/"
-                                     "resources/public/js/out/"
-                                     "resources/public/js/app.js"
+                                     "resources/public/js/"
                                      "resources/public/css/"]
 
   :minify-assets

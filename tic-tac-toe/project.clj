@@ -55,11 +55,10 @@
   {:dev
    {:assets {"resources/public/css/site.min.css" ["resources/dev/css/site.css"
                                                   "resources/dev/css/dev.css"]}
-    :options {:optimizations :none}}
+    :options {:linebreak 0}}
 
    :production
-   {:assets {"resources/public/css/site.min.css" "resources/dev/css/site.css"}
-    :options {:optimizations :advanced}}}
+   {:assets {"resources/public/css/site.min.css" "resources/dev/css/site.css"}}}
 
   :aliases {"fig"      ["exec" "-pe" "(use 'tic-tac-toe.server.services) (start-figwheel)"]
             "server"   ["ring" "server"]

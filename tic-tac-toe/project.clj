@@ -53,28 +53,42 @@
                                      "resources/public/css/"]
 
   :minify-assets
-  {:assets
-   {"resources/public/css/site.min.css" "resources/public/css/site.css"
-    "resources/public/css/dev.min.css" "resources/public/css/dev.css"}}
+  {:dev
+   {:assets {"resources/public/css/site.min.css" ["resources/dev/css/site.css"
+                                                  "resources/dev/css/dev.css"]}
+    :options {:optimizations :none}}
+
+   :production
+   {:assets {"resources/public/css/site.min.css" "resources/dev/css/site.css"}
+    :options {:optimizations :advanced}}}
 
   :aliases {"fig"      ["exec" "-pe" "(use 'tic-tac-toe.server.services) (start-figwheel)"]
             "server"   ["ring" "server"]
             "css"      ["garden" "auto"]
+            "minify"   ["minify-assets" "watch" "dev"]
             "autotest" ["cljsbuild" "auto" "test"]
             "test"     ["cljsbuild" "test"]
             "web"      ["with-profile" "production" "trampoline" "ring" "server"]
-            "live"     ["pdo" "css," "fig," "server"]
-            "dev"      ["do" "cljsbuild" "once" "app," "live"]}
+            "prod"     ["with-profile" "production" "do"
+                        "clean,"
+                        "garden" "once" "site,"
+                        "minify-assets" "production,"
+                        "cljsbuild" "once" "app"]
+            "live"     ["pdo" "css," "minify," "fig," "server"]
+            "once"     ["do" "cljsbuild" "once" "app,"
+                        "garden" "once" "dev,"
+                        "minify-assets" "dev"]
+            "dev"      ["do" "once," "live"]}
 
   :garden {:builds [{:id "site"
                      :source-paths ["src/styles"]
                      :stylesheet tic-tac-toe.styles.site/site
-                     :compiler {:output-to "resources/public/css/site.css"
+                     :compiler {:output-to "resources/dev/css/site.css"
                                 :pretty-print? true}}
                     {:id "dev"
                      :source-paths ["src/styles"]
                      :stylesheet tic-tac-toe.styles.dev/dev
-                     :compiler {:output-to "resources/public/css/dev.css"
+                     :compiler {:output-to "resources/dev/css/dev.css"
                                 :pretty-print? true}}]}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]

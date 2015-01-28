@@ -75,7 +75,7 @@
                         "cljsbuild" "once" "app"]
             "live"     ["pdo" "css," "minify," "fig," "server"]
             "once"     ["do" "cljsbuild" "once" "app,"
-                        "garden" "once" "dev,"
+                        "garden" "once,"
                         "minify-assets" "dev"]
             "dev"      ["do" "once," "live"]}
 

@@ -1,0 +1,61 @@
+.test {
+  line-height: 1.5em;
+  right: 1em;
+  border-width: 0.1em;
+  max-width: 35em;
+  top: 1em;
+  border-color: rgba(220,223,10,0.7);
+  padding: 0.3em 0.6em;
+  border-style: solid;
+  position: fixed;
+  overflow: auto;
+  margin-left: 1em;
+  font-size: 0.7em;
+  border-radius: 0.4em;
+  display: block;
+  background: rgba(252,255,198,0.9);
+  max-height: calc(100vh - 4em);
+}
+
+.test.failed {
+  border-color: rgba(240,23,40,0.7);
+  background: rgba(255,202,215,0.9);
+}
+
+.test.passed {
+  border-color: rgba(43,240,20,0.7);
+  background: rgba(220,255,216,0.9);
+}
+
+.test .test-count {
+  text-align: right;
+}
+
+.test .fail, .test .error, .test .message, .test .name, .test .res {
+  font-weight: bold;
+}
+
+.test .message {
+  color: #393;
+}
+
+.test .name {
+  color: #888;
+}
+
+.test .expected .res {
+  color: #24e;
+}
+
+.test .actual .res {
+  color: #72f;
+}
+
+.test .fail-message-list {
+
+}
+
+.test .fail-message {
+  margin: 0.4em;
+  border-top: 1px solid black;
+}

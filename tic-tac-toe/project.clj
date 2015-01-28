@@ -50,7 +50,8 @@
 
   :clean-targets  ^{:protect false} ["target/"
                                      "resources/public/js/"
-                                     "resources/public/css/"]
+                                     "resources/public/css/"
+                                     "resources/dev"]
 
   :minify-assets
   {:dev

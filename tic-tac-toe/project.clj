@@ -23,7 +23,6 @@
                  [ring/ring-defaults "0.1.3"]
                  [prone "0.8.0"]
                  [compojure "1.3.1"]
-                 [selmer "0.8.0"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
                  [figwheel "0.2.2-SNAPSHOT"]

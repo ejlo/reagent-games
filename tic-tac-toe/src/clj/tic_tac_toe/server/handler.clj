@@ -1,14 +1,14 @@
 (ns tic-tac-toe.server.handler
-  (:require [tic-tac-toe.server.services :refer [browser-repl start-figwheel]]
+  (:require [clojure.java.io :as io]
             [compojure.core :refer [GET defroutes]]
             [compojure.route :refer [not-found resources]]
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
-            [selmer.parser :refer [render-file]]
             [environ.core :refer [env]]
-            [prone.middleware :refer [wrap-exceptions]]))
+            [prone.middleware :refer [wrap-exceptions]]
+            [tic-tac-toe.server.services :refer [browser-repl start-figwheel]]))
 
 (defroutes routes
-  (GET "/" [] (render-file "templates/index.html" {:dev (env :dev?)}))
+  (GET "/" [] (io/resource "public/index.html"))
   (resources "/")
   (not-found "Not Found"))
 

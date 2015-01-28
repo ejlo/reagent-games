@@ -7,8 +7,7 @@
   :source-paths ["src/clj" "src/cljs"]
   :template-additions ["README.md"
                        "LICENSE"
-                       ".gitignore"
-                       "system.properties"]
+                       ".gitignore"]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [reagent "0.5.0-alpha"]

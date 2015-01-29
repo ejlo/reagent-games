@@ -48,17 +48,16 @@
 
   :clean-targets  ^{:protect false} ["target/"
                                      "resources/public/js/"
-                                     "resources/public/css/"
-                                     "resources/dev/"]
+                                     "resources/public/css/"]
 
   :minify-assets
   {:dev
-   {:assets {"resources/public/css/site.min.css" ["resources/dev/css/site.css"
-                                                  "resources/dev/css/dev.css"]}
+   {:assets {"resources/public/css/site.min.css" ["target/css/site.css"
+                                                  "target/css/dev.css"]}
     :options {:linebreak 0}}
 
    :production
-   {:assets {"resources/public/css/site.min.css" "resources/dev/css/site.css"}}}
+   {:assets {"resources/public/css/site.min.css" "target/css/site.css"}}}
 
   :aliases {"fig"      ["exec" "-pe" "(use 'tic-tac-toe.server.services) (start-figwheel)"]
             "server"   ["ring" "server"]
@@ -81,12 +80,12 @@
   :garden {:builds [{:id "site"
                      :source-paths ["src/styles"]
                      :stylesheet tic-tac-toe.styles.site/site
-                     :compiler {:output-to "resources/dev/css/site.css"
+                     :compiler {:output-to "target/css/site.css"
                                 :pretty-print? true}}
                     {:id "dev"
                      :source-paths ["src/styles"]
                      :stylesheet tic-tac-toe.styles.dev/dev
-                     :compiler {:output-to "resources/dev/css/dev.css"
+                     :compiler {:output-to "target/css/dev.css"
                                 :pretty-print? true}}]}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]

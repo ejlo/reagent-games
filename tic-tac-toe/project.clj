@@ -93,9 +93,9 @@
                               :notify-command ["phantomjs"
                                                :cljs.test/runner
                                                "target/test/test.js"]
-                              :compiler {:output-to     "target/test/test.js"
+                              :compiler {:output-to "target/test/test.js"
                                          :optimizations :whitespace
-                                         :pretty-print  true
+                                         :pretty-print true
                                          :preamble ["templates/js/function_prototype_polyfill.js"
                                                     "reagent/react.js"]}}}
               :test-commands {"unit-tests" ["phantomjs" :runner

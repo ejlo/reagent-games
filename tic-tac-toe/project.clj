@@ -59,8 +59,7 @@
    :production
    {:assets {"resources/public/css/site.min.css" "target/css/site.css"}}}
 
-  :aliases {"fig"      ["exec" "-pe" "(use 'tic-tac-toe.server.services) (start-figwheel)"]
-            "server"   ["ring" "server"]
+  :aliases {"server"   ["ring" "server"]
             "css"      ["garden" "auto"]
             "minify"   ["minify-assets" "watch" "dev"]
             "autotest" ["cljsbuild" "auto" "test"]
@@ -71,7 +70,7 @@
                         "garden" "once" "site,"
                         "minify-assets" "production,"
                         "cljsbuild" "once" "app"]
-            "live"     ["pdo" "css," "minify," "fig," "server"]
+            "live"     ["pdo" "css," "minify," "figwheel," "server"]
             "once"     ["do" "cljsbuild" "once" "app,"
                         "garden" "once,"
                         "minify-assets" "dev"]

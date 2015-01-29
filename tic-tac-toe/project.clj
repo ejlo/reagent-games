@@ -90,9 +90,7 @@
                                 :pretty-print? true}}]}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
-                             :compiler {:main          "tic-tac-toe.dev"
-                                        :asset-path    "js/out"
-                                        :output-to     "resources/public/js/app.js"}}
+                             :compiler {:output-to "resources/public/js/app.js"}}
                        :test {:source-paths ["src/cljs" "test"]
                               :notify-command ["phantomjs"
                                                :cljs.test/runner
@@ -123,7 +121,9 @@
                    {:builds
                     {:app {:source-paths ["src/env/dev/cljs" "test"]
                            :compiler
-                           {:output-dir    "resources/public/js/out"
+                           {:main          "tic-tac-toe.dev"
+                            :asset-path    "js/out"
+                            :output-dir    "resources/public/js/out"
                             :optimizations :none
                             :source-map    "resources/public/js/out.js.map"
                             :pretty-print  true}}}}}
@@ -137,5 +137,6 @@
                            {:app
                             {:source-paths ["src/env/prod/cljs"]
                              :compiler
-                             {:optimizations :advanced
-                              :pretty-print false}}}}}})
+                             {:main          "tic-tac-toe.prod"
+                              :optimizations :advanced
+                              :pretty-print  false}}}}}})

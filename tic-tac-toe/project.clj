@@ -15,7 +15,7 @@
                  [cljsjs/react "0.12.2-5"]
                  [garden "1.2.5"]
                  [secretary "1.2.1"]
-                 [org.clojure/clojurescript "0.0-2727" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-2740" :scope "provided"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.5.0"]

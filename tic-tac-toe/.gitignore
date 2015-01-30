@@ -12,3 +12,4 @@ pom.xml.asc
 /out
 /.repl
 /logs
+/tmp

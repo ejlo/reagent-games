@@ -9,9 +9,9 @@
 
 (figwheel/start
  {:websocket-url "ws://localhost:3449/figwheel-ws"
-  :on-jsreload (fn []
-                 (r/force-update-all)
-                 (testrunner/run-tests))})
+  :on-jsload (fn []
+               (core/init!)
+               (testrunner/run-tests))})
 
 (weasel/connect "ws://localhost:9001" :verbose true)
 

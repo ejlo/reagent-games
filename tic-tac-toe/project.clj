@@ -14,7 +14,6 @@
                  [reagent-utils "0.1.2"]
                  [cljsjs/react "0.12.2-5"]
                  [garden "1.2.5"]
-                 [secretary "1.2.1"]
                  [org.clojure/clojurescript "0.0-2740" :scope "provided"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cemerick/piggieback "0.1.5"]
@@ -63,7 +62,7 @@
             "css"      ["garden" "auto"]
             "minify"   ["minify-assets" "watch" "dev"]
             "autotest" ["cljsbuild" "auto" "test"]
-            "test"     ["cljsbuild" "test"]
+            "test"     ["cljsbuild" "once" "test"]
             "web"      ["with-profile" "production" "trampoline" "ring" "server"]
             "prod"     ["with-profile" "production" "do"
                         "clean,"
@@ -89,17 +88,13 @@
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
                              :compiler {:output-to "resources/public/js/app.js"}}
-                       :test {:source-paths ["src/cljs" "test"]
-                              :notify-command ["phantomjs"
-                                               :cljs.test/runner
-                                               "target/test/test.js"]
+                       :test {:source-paths ["src/cljs" "src/env/test/cljs" "test"]
+                              :notify-command ["phantomjs" "target/test/test.js"]
                               :compiler {:output-to "target/test/test.js"
                                          :optimizations :whitespace
                                          :pretty-print true
-                                         :preamble ["templates/js/function_prototype_polyfill.js"
-                                                    "reagent/react.js"]}}}
-              :test-commands {"unit-tests" ["phantomjs" :runner
-                                            "target/test/test.js"]}}
+                                         :preamble ["templates/js/phantomjs_polyfills.js"]}}}
+              :test-commands {"unit-tests" ["phantomjs" "target/test/test.js"]}}
 
   :profiles {:dev {:repl-options {:init-ns tic-tac-toe.server.handler
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}

@@ -19,7 +19,7 @@
   (core/init!)
 
   (let [results (t/run-all-tests)]
-    (t/on-testing-complete results #(exit (t/successful? %))))
+    (t/on-testing-complete results #(exit (if (t/successful? %) 0 1))))
 
   (catch js/Object e
     (print (.-stack e))

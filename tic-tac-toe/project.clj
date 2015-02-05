@@ -59,7 +59,7 @@
    {:assets {"resources/public/css/site.min.css" "target/css/site.css"}}}
 
   :aliases {"server"   ["ring" "server"]
-            "css"      ["garden" "auto"]
+            "css"      ["garden" "auto" "dev"]
             "minify"   ["minify-assets" "watch" "dev"]
             "autotest" ["cljsbuild" "auto" "test"]
             "test"     ["cljsbuild" "once" "test"]

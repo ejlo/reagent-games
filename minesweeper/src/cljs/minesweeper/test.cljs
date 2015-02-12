@@ -9,9 +9,9 @@
    (when message
      [:div.message (str message)])
    (when (= type :fail)
-     [:div.expected [:span.name "Expected: "] [:span.res (str expected)]]
-     [:div.actual [:span.name (if (= type :error) "Stacktrace: " "Actual: ")]
-      [:span {:class :res} (str actual)]])
+     (list [:div.expected [:span.name "Expected: "] [:span.res (str expected)]]
+           [:div.actual [:span.name (if (= type :error) "Stacktrace: " "Actual: ")]
+            [:span {:class :res} (str actual)]]))
    (when (= type :error)
      [:div.stacktrace [:span.name "Stacktrace: "]
       [:span {:class :stacktrace} (str actual)]])])

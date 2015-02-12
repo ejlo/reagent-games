@@ -10,22 +10,20 @@
                        ".gitignore"]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [reagent "0.5.0-alpha"]
+                 [reagent "0.5.0-SNAPSHOT"]
                  [reagent-utils "0.1.2"]
-                 [reagent/reagent-cursor "0.1.2"]
-                 [cljsjs/react "0.12.2-5"]
                  [garden "1.2.5"]
-                 [org.clojure/clojurescript "0.0-2740" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-2816" :scope "provided"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cemerick/piggieback "0.1.5"]
-                 [weasel "0.5.0"]
+                 [weasel "0.6.0-SNAPSHOT"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.3"]
                  [prone "0.8.0"]
                  [compojure "1.3.1"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.2.2-SNAPSHOT"]
+                 [figwheel "0.2.3-SNAPSHOT"]
                  [ring-mock "0.1.5"]
                  [ring/ring-devel "1.3.2"]
                  [pjstadig/humane-test-output "0.6.0"]
@@ -38,7 +36,7 @@
             [lein-exec "0.3.4"]
             [lein-pdo "0.1.1"]
             [com.cemerick/clojurescript.test "0.3.3"]
-            [lein-figwheel "0.2.2-SNAPSHOT"]
+            [lein-figwheel "0.2.3-SNAPSHOT"]
             [cider/cider-nrepl "0.9.0-SNAPSHOT"]]
 
   :ring {:handler minesweeper.server.handler/app}
@@ -68,12 +66,14 @@
                      :source-paths ["src/styles"]
                      :stylesheet minesweeper.styles.site/site
                      :compiler {:output-to "resources/public/css/site.css"
+                                :vendors ["webkit"]
                                 :pretty-print? false}}
                     {:id "dev"
                      :source-paths ["src/styles"]
                      :stylesheet minesweeper.styles.site/site
                      :env {:dev? true}
                      :compiler {:output-to "resources/public/css/site.css"
+                                :vendors ["webkit"]
                                 :pretty-print? true}}]}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]

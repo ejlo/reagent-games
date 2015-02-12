@@ -4,7 +4,7 @@
             [minesweeper.core-test]))
 
 ;; temporary state, we don't want to mess with the app state during testing
-(def fail-messages (atom '()) )
+(def fail-messages (atom []))
 
 (defmethod report :pass [{:keys [test-env] :as m}]
   (t/inc-report-counter test-env :pass))
@@ -42,5 +42,5 @@
 (defn run-tests []
   (enable-console-print!)
   (println "Running tests...")
-  (reset! fail-messages '())
+  (reset! fail-messages [])
   (t/run-all-tests))

@@ -8,15 +8,22 @@
    [:h5.testfail (str/capitalize (name type)) ": " test-name]
    (when message
      [:div.message (str message)])
-   [:div.expected [:span.name "Expected: "] [:span.res (str expected)]]
-   [:div.actual [:span.name "Actual: "]
-    [:span {:class (if (= type :error) :stack :res)} (str actual)]]])
+   (when (= type :fail)
+     [:div.expected [:span.name "Expected: "] [:span.res (str expected)]]
+     [:div.actual [:span.name (if (= type :error) "Stacktrace: " "Actual: ")]
+      [:span {:class :res} (str actual)]])
+   (when (= type :error)
+     [:div.stacktrace [:span.name "Stacktrace: "]
+      [:span {:class :stacktrace} (str actual)]])])
+
+(defn indexed [coll]
+  (map-indexed (fn [idx c] [idx c]) coll))
 
 (defn fail-message-list [msgs]
   (let [msgs @(cur [:test :fail-messages])]
     (when-not (empty? msgs)
       [:div.fail-message-list
-       (for [m msgs]
+       (for [[idx m] (indexed msgs)] ^{:key idx}
          [fail-message m])])))
 
 (defn test-component []

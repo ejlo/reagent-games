@@ -1,6 +1,6 @@
 (ns minesweeper.styles.dev
   (:require [garden.def :refer [defstyles]]
-            [garden.units :refer [px em]]))
+            [garden.units :as unit :refer [px em]]))
 
 (defstyles dev
   [:.test {:display :block
@@ -11,7 +11,7 @@
            :max-height "calc(100vh - 4em)"
            :max-width (em 35)
            :overflow :auto
-           :font-size (em 0.7)
+           :font-size (px 14)
            :line-height (em 1.5)
            :background "rgba(252,255,198,0.9)"
            :padding [[(em 0.3) (em 0.6)]]
@@ -29,13 +29,14 @@
 
    [:.test-count {:text-align :right}]
 
-   [:.fail :.error :.message :.name :.res {:font-weight :bold}]
+   [:.fail :.error :.message :.name :.res
+    {:font-weight :bold}]
    [:.message {:color "#393"}]
 
    [:.name {:color "#888"}]
    [:.expected [:.res {:color "#24e"}]]
    [:.actual [:.res {:color "#72f"}]]
-
+   [:.stacktrace {:display :block}]
    [:.fail-message-list {}]
    [:.fail-message {:border-top [[(px 1) :solid :black]]
                     :margin (em 0.4)}]])

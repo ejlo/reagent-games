@@ -33,8 +33,8 @@
    {:position :absolute
     :top 0
     :left 0
-    :height (percent 100)
-    :width (percent 100)}])
+    :height (vh 100)
+    :width (vw 100)}])
 
 (def tilesize 20) ;vmin
 

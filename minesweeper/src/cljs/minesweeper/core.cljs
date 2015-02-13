@@ -77,7 +77,7 @@
           (str/capitalize (name val))])]])
 
 (defn new-game-button []
-  [:div.button {:on-click #(let [sz (or (get-size-form-value) :medium)]
+  [:div.button {:on-click #(let [sz (or (get-size-form-value) :small)]
                              (reset! (cur [:size-form-value]) sz)
                              (state/start-game! sz))}
    "Start new game!"])

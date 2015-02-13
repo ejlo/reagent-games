@@ -29,7 +29,7 @@
    :status nil
    :result nil})
 
-(defonce app-state (reagent/atom (init-state! :medium)))
+(defonce app-state (reagent/atom (init-state! :small)))
 
 (def cursor
   (memoize

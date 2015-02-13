@@ -91,8 +91,8 @@
         (= :ready s))))
 
 (def boom-imgs
-  (list ^{:key 1} [:img.crater {:src "../img/burn_mark.png"}]
-        ^{:key 2} [:img.explosion {:src "../img/explosion.png"}]))
+  (list ^{:key 1} [:img.crater {:src "img/burn_mark.png"}]
+        ^{:key 2} [:img.explosion {:src "img/explosion.png"}]))
 
 (defn tile-class-and-content [y x]
   (let [{:keys [n mine mark boom hidden]} @(cur [:board :tiles y x])

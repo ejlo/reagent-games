@@ -67,7 +67,7 @@
                      :stylesheet minesweeper.styles.site/site
                      :compiler {:output-to "resources/public/css/site.css"
                                 :vendors ["webkit"]
-                                :pretty-print? false}}
+                                :pretty-print? true}}
                     {:id "dev"
                      :source-paths ["src/styles"]
                      :stylesheet minesweeper.styles.site/site

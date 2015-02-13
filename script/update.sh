@@ -5,6 +5,7 @@ cd $current_dir
 cd ..
 
 git checkout master
+git pull
 
 rm -rf target/games/*
 mkdir -p target/games

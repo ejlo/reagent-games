@@ -10,7 +10,7 @@ rm -rf target/games/*
 mkdir -p target/games
 
 for dir in */; do
-    if [[ $dir != "../target/" ]]; then
+    if [[ $dir != "target/" ]]; then
         cd $dir
         game=$(basename "$PWD")
         echo -e "\n\nWorking with $game..."

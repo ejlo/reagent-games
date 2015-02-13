@@ -2,15 +2,26 @@
 
 current_dir=$(dirname "$0")
 cd $current_dir
+cd ..
 
-for dir in ../*/; do
-    if [[ $dir != "../script/" ]] && [[ $dir != "../games/" ]]; then
+git checkout master
+
+rm -rf target/games/*
+mkdir -p target/games
+
+for dir in */; do
+    if [[ $dir != "../target/" ]]; then
         cd $dir
         game=$(basename "$PWD")
         echo -e "\n\nWorking with $game..."
         lein do clean, prod
-        rm -rf ../games/$game
-        cp -r resources/public ../games/$game
-        cd ../$current_dir
+        cp -r resources/public ../target/games/$game
+        cd ..
     fi
 done
+
+git checkout gh-pages
+
+rm -rf ../games/*
+
+cp -r target/games/* games/

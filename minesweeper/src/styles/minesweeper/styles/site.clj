@@ -19,8 +19,9 @@
 
 (defcssfn url)
 
-(defn background-icon [icon & [{:keys [size] :or {size 0.6}}]]
-  (let [margin (unit/rem (* 0.5 (- 1 size)))]
+(defn background-icon [icon & [{:keys [size div-size]
+                                :or {size 0.6 div-size 1}}]]
+  (let [margin (unit/rem (* 0.5 (- div-size size)))]
     {:background-image (url (str "../img/" (name icon) ".png"))
      :background-repeat :no-repeat
      :background-size [[(unit/rem size) (unit/rem size)]]
@@ -102,11 +103,11 @@
      :margin-left :auto
      :margin-right :auto}
     [:&.play
-     (background-icon "smiley_play" {:size 1.2})]
+     (background-icon "smiley_play" {:size 1.1 :div-size 1.2})]
     [:&.success
-     (background-icon "smiley_success" {:size 1.2})]
+     (background-icon "smiley_success" {:size 1.1 :div-size 1.2})]
     [:&.failure
-     (background-icon "smiley_failure" {:size 1.2})]]])
+     (background-icon "smiley_failure" {:size 1.1 :div-size 1.2})]]])
 
 (def new-game-row
   [:.new-game-row
@@ -167,7 +168,7 @@
       :height (unit/rem 1)
       :border [[(px 1) :solid "rgba(0,0,0,0.05)"]]}]
     [:&.active
-     [:.tile
+     [:.tile.hidden :.tile.mark
       {:cursor :pointer}
       [:&:hover
        {:background-color "#e5e5e5"}]
@@ -191,8 +192,7 @@
 
 (def tile
   [:.tile
-   {
-    :position :absolute
+   {:position :absolute
     :text-align :center
     :width (unit/rem 1)
     :min-width (unit/rem 1)
@@ -212,7 +212,7 @@
      :color "#383"}]
    [:&.bad-mark
     {:color "#c33"
-     :cursor :normal
+     :cursor :default
      :font-size (unit/rem 1)
      :font-weight :normal}]
    [:&.boom
@@ -227,6 +227,8 @@
    [:&.hidden-mine
     (background-icon :mine)]
 
+   [:&.number
+    {:cursor :default}]
    (let [s 75 l 45
          s2 55 l2 35]
      [[:&.nr0 {:color "#ddd"}]

@@ -9,7 +9,8 @@
 
 (defn tile [y x]
   (reagent/create-class
-   {:component-did-mount
+   {:display-name (str "tile-" x "-" y)
+    :component-did-mount
     (fn [this]
       (gevents/listen (reagent/dom-node this) "click"
                       (fn [event]
@@ -20,11 +21,12 @@
                           (state/mark-tile y x)
                           (.preventDefault event))
                         true))
-    :render (fn []
-              (let [[class content] (state/tile-class-and-content y x)]
-                [:div.cell
-                 [:div.tile {:class class}
-                  content]]))}))
+    :reagent-render
+    (fn [y x]
+      (let [[class content] (state/tile-class-and-content y x)]
+        [:div.cell
+         [:div.tile {:class class}
+          content]]))}))
 
 (defn row [y size]
   [:div.row

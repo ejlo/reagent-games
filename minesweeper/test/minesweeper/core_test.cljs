@@ -30,7 +30,7 @@
     (is (= (set (state/neighbors size 2 2 (fn [y x] (= x 1))))
            #{[1 1] [2 1]}))))
 
-(deftest put-mine {}
+(deftest put-mine
   (let [size [3 3]
         _ (state/clean-state! size)
         tiles @(cur [:board :tiles])]
@@ -45,7 +45,7 @@
            _     (is (= (get-n-vector tiles)
                         [[1 2 2] [2 :mine :mine] [:mine 3 2]]))])))
 
-(deftest put-random-mines {}
+(deftest put-random-mines
   (let [sz 3
         mines 5
         size [sz sz]
@@ -73,19 +73,19 @@
   (r/force-update-all)
   (is (= "2" (some-> [".test" ".pass" :span] sel second dommy/text))))
 
-(deftest app-exists {}
+(deftest app-exists
   (is (sel1 :#app)))
 
-(deftest main-exists {}
+(deftest main-exists
   (is (sel1 :#main)))
 
-(deftest board-exists {}
+(deftest board-exists
   (is (sel1 :#board)))
 
-(deftest info-exists {}
+(deftest info-exists
   (is (sel1 :#info)))
 
-(deftest empty-board {}
+(deftest empty-board
   (let [size [3 4]
         [y x] size
         tile-count (* y x)]
@@ -106,7 +106,7 @@
     (r/force-update-all)
     (is (= 1 (some-> :.hidden sel count)) "Flood show")))
 
-(deftest board-mark {}
+(deftest board-mark
   (state/start-game! [3 3] 0)
   (state/mark-tile 0 0)
   (r/force-update-all)
@@ -115,7 +115,7 @@
   (is (= "tile mark" (some-> :.tile sel1 dommy/class)))
   (state/end-game! :failure))
 
-(deftest boom {}
+(deftest boom
   (let [size [3 3]]
     (state/start-game! size 0)
     (-> @(cur [:board :tiles])
@@ -136,7 +136,7 @@
     (is (= (first (state/tile-class-and-content 1 2)) :bad-mark))
     (is (= (first (state/tile-class-and-content 2 2)) :hidden-mine))))
 
-(deftest win {}
+(deftest win
   (let [size [3 3]]
     (state/start-game! size 0)
     (-> @(cur [:board :tiles])
